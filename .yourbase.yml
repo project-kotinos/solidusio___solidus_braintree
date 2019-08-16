@@ -1,0 +1,39 @@
+dependencies:
+  build:
+    - ruby:2.6.3
+    - node:10.16.3
+
+build_targets:
+  - name: default
+    container: 
+      image: yourbase/yb_ubuntu_ng:18.04
+      environment:
+            - SOLIDUS_BRANCH=v2.4
+            - DB=postgres
+            - s3_region=us-west-2
+            - DATABASE_HOST={{ .Containers.IP "postgres" }}
+            - RAILS_ENV=test
+      dependencies:
+            containers:
+              postgres:
+                label: postgres
+                image: postgres:latest
+                environment:
+                  - POSTGRES_PASSWORD=postgres
+                  - POSTGRES_USER=postgres
+                  - POSTGRES_DB=solidus_braintree_solidus_test
+                port_check:
+                  port: 5432
+                  timeout: 90
+    environment:
+      - JRUBY_OPTS="-J-Xmx1024m --debug"
+      - SOLIDUS_BRANCH=v2.4 
+      - DB=postgres
+    commands:
+      - chmod +x yourbased.sh
+      - ./yourbased.sh
+
+ci:
+  builds:
+    - name: tests
+      build_target: default
