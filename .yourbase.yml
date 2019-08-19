@@ -11,7 +11,7 @@ build_targets:
       - DB_USERNAME=root
       - DB_PASSWORD=root
       - DB_HOST={{ .Containers.IP "db" }}
-      - DATABASE_URL=postgres://root:root@{{ .Containers.IP "db" }}:5432/solidus_easypost_solidus_test
+      - DATABASE_URL=postgres://root:root@{{ .Containers.IP "db" }}:5432/solidus_braintree_solidus_test
       - DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL=true
   dependencies:
       containers:
@@ -20,7 +20,7 @@ build_targets:
           environment:
             - POSTGRES_PASSWORD=root
             - POSTGRES_USER=root
-            - POSTGRES_DB=solidus_easypost_solidus_test
+            - POSTGRES_DB=solidus_braintree_solidus_test
           port_check:
             port: 5432
             timeout: 45
