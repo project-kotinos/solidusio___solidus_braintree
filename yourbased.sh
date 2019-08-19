@@ -48,7 +48,7 @@ fi
 export PATH="$PATH:/opt/bin"
 
 gem update --system
-gem install bundler -v 2.0.1
+gem install bundler -v 1.17.3
 # install
 bundle install --jobs=3 --retry=3
 # script
