@@ -14,6 +14,13 @@ export JRUBY_OPTS="--server -Dcext.enabled=false -Xcompile.invokedynamic=false"
 
 apt-get update && apt-get install -y tzdata unzip
 
+#install phantomjs
+rm -rf $PWD/travis_phantomjs; mkdir -p $PWD/travis_phantomjs
+wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 -O $PWD/travis_phantomjs/phantomjs-2.1.1-linux-x86_64.tar.bz2
+tar -xvf $PWD/travis_phantomjs/phantomjs-2.1.1-linux-x86_64.tar.bz2 -C $PWD/travis_phantomjs
+PATH=$PWD/travis_phantomjs/phantomjs-2.1.1-linux-x86_64/bin:$PATH
+phantomjs --version
+
 # Install chrome and chrome driver
 if [ ! -f /usr/bin/google-chrome ]; then
   curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add
