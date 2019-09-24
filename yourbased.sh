@@ -59,4 +59,5 @@ gem install bundler -v 1.17.3
 # install
 bundle install --jobs=3 --retry=3
 # script
-bundle exec rake
+bundle exec rake test_app
+bundle exec rake --trace spec

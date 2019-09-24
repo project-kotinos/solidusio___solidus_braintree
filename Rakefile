@@ -1,6 +1,6 @@
 require "rspec/core/rake_task"
 require 'spree/testing_support/extension_rake'
-
+require 'yourbase/rspec/skipper'
 RSpec::Core::RakeTask.new(:spec)
 
 require 'bundler'

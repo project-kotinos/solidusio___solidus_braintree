@@ -1,3 +1,4 @@
+require 'yourbase/rspec/skipper'
 require 'simplecov'
 SimpleCov.start do
   add_filter 'spec/dummy'
